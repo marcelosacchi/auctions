@@ -11,9 +11,10 @@
 
 library(matrixStats)
 
-N <- 10 # number of players on each side of the market
-sigma <-.25
-omega <-.25
+#N # number of players on each side of the market is assumed predefined
+#sigma # assumed predefined
+#omega # assumed predefined
+
 J <- round(sqrt(N))
 
 mu <- rnorm(N, mean = 0, sd = 1)
