@@ -21,10 +21,18 @@ mu <- rnorm(N, mean = 0, sd = 1)
 g <- matrix(rnorm(N^2, mean = 0, sd = 1), nrow=N,ncol=N)
 u <- t(matrix(replicate(N,mu),nrow=N))+sigma*g # men's utility over women
 g_bach <- rowMaxs(matrix(rnorm(N*J, mean = 0, sd = 1), nrow=N,ncol=J), na.rm = TRUE)
-u_bach <- sigma*g_bach # men's utility of staying single
+u_bach <- matrix(sigma*g_bach, N, 1) # men's utility of staying single
+rownames(u) <- paste("Man",1:N)
+colnames(u) <- paste("Woman",1:N)
+rownames(u_bach) <- paste("Man",1:N)
+colnames(u_bach) <- "Single"
 
 delta <- rnorm(N, mean = 0, sd = 1)
 e <- matrix(rnorm(N^2, mean = 0, sd = 1), nrow=N,ncol=N)
 v <- t(matrix(replicate(N,mu),nrow=N))+omega*e # women's utility over men
 e_bach <- rowMaxs(matrix(rnorm(N*J, mean = 0, sd = 1), nrow=N,ncol=J), na.rm = TRUE)
-v_bach <- omega*e_bach # women's utility of staying single
+v_bach <- matrix(omega*e_bach, N, 1) # women's utility of staying single
+rownames(v) <- paste("Woman",1:N)
+colnames(v) <- paste("Man",1:N)
+rownames(v_bach) <- paste("Woman",1:N)
+colnames(v_bach) <- "Single"
